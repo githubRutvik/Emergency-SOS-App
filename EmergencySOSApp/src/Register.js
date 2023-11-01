@@ -45,7 +45,7 @@ const Register = props => {
               width: '78%',
               paddingRight: 16
             }}>
-            <Text style={{color: 'grey', fontSize: 16}}>
+            <Text style={{color: 'grey', fontSize: 16, alignItems:'center'}}>
               By signing in, you agree to our{' '}
             </Text>
             <Text style={{color: red, fontWeight: 'bold', fontSize: 16}}>
