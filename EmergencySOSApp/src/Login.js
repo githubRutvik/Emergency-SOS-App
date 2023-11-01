@@ -2,32 +2,24 @@ import React from 'react';
 import {View, Text, Touchable, TouchableOpacity} from 'react-native';
 import Background from './Background';
 import Btn from './Btn';
-import {blue} from './Constants';
+import {blue, red} from './Constants';
 import Field from './Field';
 
 const Login = (props) => {
   return (
-    <Background>
+    
       <View style={{alignItems: 'center', width: 460}}>
         <Text
           style={{
-            color: 'white',
+            color: 'red',
             fontSize: 64,
             fontWeight: 'bold',
-            marginVertical: 20,
+            marginTop: 100,
           }}>
           Login
         </Text>
-        <View
-          style={{
-            backgroundColor: 'white',
-            height: 700,
-            width: 460,
-            borderTopRadius: 70,
-            paddingTop: 100,
-            alignItems: 'center',
-          }}>
-          <Text style={{fontSize: 40, color: blue, fontWeight: 'bold'}}>
+        
+          <Text style={{fontSize: 30, color: red, fontWeight: 'bold', marginTop: 20}}>
             Welcome Back
           </Text>
           <Text
@@ -39,27 +31,24 @@ const Login = (props) => {
             }}>
             Login to your account
           </Text>
-          <Field
-            placeholder="Email / Username"
-            keyboardType={'email-address'}
-          />
+          <Field style={{ marginBottom:10, alignItems:'center'}}placeholder="Email / Username" keyboardType={'email-address'} />
           <Field placeholder="Password" secureTextEntry={true} />
           <View
-            style={{alignItems: 'flex-end', width: '78%', paddingRight: 16, marginBottom: 200}}>
-            <Text style={{color: blue, fontWeight: 'bold', fontSize: 16}}>
+            style={{alignItems: 'center', width: '78%', paddingRight: 16, marginBottom: 200}}>
+            <Text style={{color: red, fontWeight: 'bold', fontSize: 16}}>
               Forgot Password ?
             </Text>
           </View>
           <Btn textColor='white' bgColor={blue} btnLabel="Login" Press={() => alert("Logged In")} />
           <View style={{ display: 'flex', flexDirection :'row', justifyContent: "center" }}>
-            <Text style={{ fontSize: 16, fontWeight:"bold" }}>Don't have an account ? </Text>
+            <Text style={{ fontSize: 16, fontWeight:"bold", color:'#000000'}}>Don't have an account ? </Text>
             <TouchableOpacity onPress={() => props.navigation.navigate("Register")}>
-            <Text style={{ color: blue, fontWeight: 'bold', fontSize: 16 }}>Register</Text>
+            <Text style={{ color: red, fontWeight: 'bold', fontSize: 16 }}>Register</Text>
             </TouchableOpacity>
           </View>
         </View>
-      </View>
-    </Background>
+      
+    
   );
 };
 
