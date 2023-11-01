@@ -2,7 +2,7 @@ import React from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 import Background from './Background';
 import Btn from './Btn';
-import { blue, darkGreen, green, white } from './Constants';
+import { blue, white } from './Constants';
 
 const Home = (props) => {
   return (

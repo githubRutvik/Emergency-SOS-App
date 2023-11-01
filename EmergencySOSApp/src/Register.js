@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, Touchable, TouchableOpacity} from 'react-native';
 import Background from './Background';
 import Btn from './Btn';
-import {blue, darkGreen} from './Constants';
+import {blue} from './Constants';
 import Field from './Field';
 
 const Register = props => {
