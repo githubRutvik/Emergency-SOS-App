@@ -11,15 +11,15 @@ function Dashboard() {
     <View style={{ flex: 1, alignItems: 'center' }}>
       <Text style={{ color: 'red', fontSize: 64,  marginTop: 30, marginBottom: 30, fontWeight: 'bold' }}>Welcome</Text>
       <Image
-        style={{height:150, width:150, alignSelf:'center', marginTop: 50}}
+        style={{height:250, width:150, alignSelf:'center'}}
         source={require('./assets/Contacts.png')}
       />
       <Image
-        style={{height:150, width:150, alignSelf:'center', marginTop: 50}}
+        style={{height:250, width:150, alignSelf:'center'}}
         source={require('./assets/Flash.png')}
       />
       <Image
-        style={{height:150, width:150, alignSelf:'center', marginTop: 50}}
+        style={{height:200, width:170, alignSelf:'center'}}
         source={require('./assets/Instructions.png')}
       />
     </View>
