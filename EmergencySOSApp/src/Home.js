@@ -14,7 +14,7 @@ const Home = (props) => {
         style={{height:100, width:100, alignSelf:'center'}}
         source={require('./assets/Logo.png')}
       />
-      <Text style={{ color: 'red', fontSize: 64, marginBottom: 40, marginTop: 30 }}>EmergencySOS</Text>
+      <Text style={{ color: 'red', fontSize: 64, marginBottom: 40, marginTop: 30}}>EmergencySOS</Text>
       <Text style={{ color: 'red', fontSize: 64, marginBottom: 40 }}>Let's start</Text>
       <Btn bgColor={white} textColor={red} btnLabel="Login" Press={() => props.navigation.navigate("Login")} />
       <Btn bgColor='white' textColor={red} btnLabel="Register" Press={() => props.navigation.navigate("Register")} />
