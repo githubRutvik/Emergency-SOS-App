@@ -11,17 +11,20 @@ function Dashboard() {
     <View style={{ flex: 1, alignItems: 'center' }}>
       <Text style={{ color: 'red', fontSize: 64,  marginTop: 30, marginBottom: 30, fontWeight: 'bold' }}>Welcome</Text>
       <Image
-        style={{height:250, width:150, alignSelf:'center'}}
-        source={require('./assets/Contacts.png')}
+        style={{height:120, width:120, alignSelf:'center' }}
+        source={require('./assets/ContactsLogo.png')}
       />
+      <Text style={{color: '#000000', marginBottom:50, fontSize: 30, fontWeight: 'bold'}}>Contacts</Text>
       <Image
-        style={{height:250, width:150, alignSelf:'center'}}
-        source={require('./assets/Flash.png')}
+        style={{height:120, width:120, alignSelf:'center'}}
+        source={require('./assets/FlasherLogo.png')}
       />
+      <Text style={{color: '#000000', marginBottom:50, fontSize: 30, fontWeight: 'bold'}}>Flasher</Text>
       <Image
-        style={{height:200, width:170, alignSelf:'center'}}
-        source={require('./assets/Instructions.png')}
+        style={{height:120, width:120, alignSelf:'center'}}
+        source={require('./assets/InstructionLogo.png')}
       />
+      <Text style={{color: '#000000', marginBottom:50, fontSize: 30, fontWeight: 'bold'}}>Instruction</Text>
     </View>
   );
 }
