@@ -50,7 +50,7 @@ const Register = props => {
         </Text>
         <Text
           style={{
-            color: 'red',
+            color: '#000000',
             fontSize: 19,
             fontWeight: 'bold',
             marginTop: 15,
@@ -79,10 +79,10 @@ const Register = props => {
               width: '78%',
               paddingRight: 16
             }}>
-            <Text style={{color: 'grey', fontSize: 16, alignItems:'center'}}>
+            <Text style={{color: 'grey', fontSize: 16, alignItems:'center', marginTop:25}}>
               By signing in, you agree to our{' '}
             </Text>
-            <Text style={{color: red, fontWeight: 'bold', fontSize: 16}}>
+            <Text style={{color: red, fontWeight: 'bold', fontSize: 16, marginTop:25}}>
               Terms & Conditions
             </Text>
           </View>
@@ -96,10 +96,10 @@ const Register = props => {
               paddingRight: 16,
               marginBottom: 10
             }}>
-            <Text style={{color: 'grey', fontSize: 16}}>
+            <Text style={{color: 'grey', fontSize: 16, marginTop:10}}>
               and {" "}
             </Text>
-            <Text style={{color: red, fontWeight: 'bold', fontSize: 16}}>
+            <Text style={{color: red, fontWeight: 'bold', fontSize: 16, marginTop:10}}>
               Privacy Policy
             </Text>
           </View>

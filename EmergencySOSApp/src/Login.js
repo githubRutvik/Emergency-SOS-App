@@ -32,7 +32,7 @@ const Login = (props) => {
 
 
 
-    <View style={{ alignItems: 'center', width: 460 }}>
+    <View style={{ flex: 1, alignItems: 'center', width: 460 }}>
       <Text
         style={{
           color: 'red',
@@ -56,7 +56,7 @@ const Login = (props) => {
         Login to your account
       </Text>
 
-      <Field style={{ marginBottom: 10, alignItems: 'center' }} 
+      <Field style={{ flex: 1, marginBottom: 10, alignItems: 'center' }} 
         placeholder="Email"
         value={email}
         onChangeText={txt => setEmail(txt)} />

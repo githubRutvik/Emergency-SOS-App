@@ -11,7 +11,7 @@ import Dashboard from './src/Dashboard';
 import Contacts from './src/Contacts';
 import Flasher from './src/Flasher';
 import Siren from './src/Siren';
-import Instructions from './src/Instructions ';
+import Instructions from './src/Instructions';
 
 
 
