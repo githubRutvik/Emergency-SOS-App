@@ -5,7 +5,7 @@ import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { Image} from 'react-native';
 
 
-function Flasher() {
+function Siren() {
   return (
     <View >
       
@@ -16,4 +16,4 @@ function Flasher() {
 
 
 
-export default Flasher;
+export default Siren;
