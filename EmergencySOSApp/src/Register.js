@@ -38,7 +38,7 @@ const Register = props => {
     
   return (
     
-      <View style={{ alignItems:'center',  width: 450, height: 1000, backgroundColor:'white'}}>
+      <View style={{ alignItems:'center',  width: '100%' , height: 1000, backgroundColor:'white'}}>
         <Text
           style={{
             color: 'red',
@@ -79,7 +79,7 @@ const Register = props => {
               width: '78%',
               paddingRight: 16
             }}>
-            <Text style={{color: 'grey', fontSize: 16, alignItems:'center', marginTop:25}}>
+            <Text style={{color: 'grey', fontSize: 16, alignItems:'center', marginTop:25, marginLeft:25}}>
               By signing in, you agree to our{' '}
             </Text>
             <Text style={{color: red, fontWeight: 'bold', fontSize: 16, marginTop:25}}>

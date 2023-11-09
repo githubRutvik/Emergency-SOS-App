@@ -6,14 +6,14 @@ import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { Image } from 'react-native';
 import Torch from 'react-native-torch';
 
-const SirenON = <Image
+const FlashON = <Image
   style={{ height: 200, width: 200, alignSelf: 'center', justifyContent: 'center' }}
-  source={require('./assets/SirenON.png')}
+  source={require('./assets/FlashON.png')}
 />
 
-const SirenOFF = <Image
+const FlashOFF = <Image
   style={{ height: 200, width: 200, alignSelf: 'center', justifyContent: 'center' }}
-  source={require('./assets/SirenOFF.png')}
+  source={require('./assets/FlashOFF.png')}
 />
 
 const Flasher = () => {
@@ -35,7 +35,7 @@ const Flasher = () => {
   return (
     <View style={{ flex: 1 }}>
       <TouchableOpacity onPress={handlePress}>
-        {isTorchOn ? SirenON : SirenOFF}
+        {isTorchOn ? FlashON : FlashOFF}
       </TouchableOpacity>
       <Text style={{ color: '#000000', marginBottom: 50, fontSize: 20, fontWeight: 'bold' }}>Flasher</Text>
     </View>

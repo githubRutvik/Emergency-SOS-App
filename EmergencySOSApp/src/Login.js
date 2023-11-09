@@ -9,7 +9,7 @@ import { useState } from 'react'
 
 const Login = (props) => {
 
- 
+
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -18,21 +18,18 @@ const Login = (props) => {
   console.log(password)
 
   const userLogin = () => {
-  auth()
-    .signInWithEmailAndPassword(email, password)
-    .then(() => {
-      Alert.alert("User Logged In");
-    })
-    .catch(error => {
-      console.log(error);
-    });
+    auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        Alert.alert("User Logged In");
+      })
+      .catch(error => {
+        console.log(error);
+      });
 
   }
   return (
-
-
-
-    <View style={{ flex: 1, alignItems: 'center', width: 460 }}>
+    <View style={{ flex: 1, alignItems: 'center', width: '100%', marginHorizontal: 'auto' }}>
       <Text
         style={{
           color: 'red',
@@ -56,7 +53,7 @@ const Login = (props) => {
         Login to your account
       </Text>
 
-      <Field style={{ flex: 1, marginBottom: 10, alignItems: 'center' }} 
+      <Field style={{ flex: 1, marginBottom: 10, alignItems: 'center' }}
         placeholder="Email"
         value={email}
         onChangeText={txt => setEmail(txt)} />
