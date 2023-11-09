@@ -9,7 +9,7 @@ import Sound from 'react-native-sound'
 function Siren() {
 
   const playSound = () => {
-    var sound = new Sound('Siren.mp3', Sound.MAIN_BUNDLE, (error) => {
+    var sound = new Sound('siren.mp3', Sound.MAIN_BUNDLE, (error) => {
       if (error) {
         console.log('failed to load the sound', error);
         return;
@@ -32,7 +32,7 @@ function Siren() {
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text
         style={{ padding:20, borderWidth:5, backgroundColor:'orange'
-        , playSound()}}>
+        }}>
         Play</Text>
     </View >
   );

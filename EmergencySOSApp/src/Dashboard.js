@@ -12,37 +12,37 @@ function Dashboard(props) {
     <View style={{ flex: 1, alignItems: 'center' }}>
       <Text style={{ color: 'red', fontSize: 64, marginTop: 30, marginBottom: 30, fontWeight: 'bold' }}>Welcome</Text>
 
-      <TouchableHighlight onPress={() => props.navigation.navigate('Contacts')}>
+      <TouchableOpacity onPress={() => props.navigation.navigate('Contacts')}>
         <Image
           style={{ height: 120, width: 120, alignSelf: 'center' }}
           source={require('./assets/ContactsLogo.png')}
         />
-      </TouchableHighlight>
+      </TouchableOpacity>
       <Text style={{ color: '#000000', marginBottom: 50, fontSize: 20, fontWeight: 'bold' }}>Contacts</Text>
       
 
-      <TouchableHighlight onPress={() => props.navigation.navigate('Flasher')}>
+      <TouchableOpacity onPress={() => props.navigation.navigate('Flasher')}>
         <Image
           style={{ height: 120, width: 120, alignSelf: 'center' }}
           source={require('./assets/FlasherLogo.png')}
         />
-      </TouchableHighlight>
+      </TouchableOpacity>
       <Text style={{ color: '#000000', marginBottom: 50, fontSize: 20, fontWeight: 'bold' }}>Flasher</Text>
 
-      <TouchableHighlight onPress={() => props.navigation.navigate('Siren')}>
+      <TouchableOpacity onPress={() => props.navigation.navigate('Siren')}>
         <Image
           style={{ height: 120, width: 120, alignSelf: 'center' }}
           source={require('./assets/SirenLogo.png')}
         />
-      </TouchableHighlight>
+      </TouchableOpacity>
       <Text style={{ color: '#000000', marginBottom: 50, fontSize: 20, fontWeight: 'bold' }}>Siren</Text>
 
-      <TouchableHighlight onPress={() => props.navigation.navigate('Instructions')}>
+      <TouchableOpacity onPress={() => props.navigation.navigate('Instruction')}>
         <Image
           style={{ height: 120, width: 120, alignSelf: 'center' }}
           source={require('./assets/InstructionLogo.png')}
         />
-      </TouchableHighlight>
+      </TouchableOpacity>
 
       <Text style={{ color: '#000000', marginBottom: 50, fontSize: 20, fontWeight: 'bold' }}>Instructions</Text>
     </View>

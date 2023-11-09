@@ -1,33 +1,45 @@
 import React from 'react';
-import { View, Text, Touchable, } from 'react-native';
+import { useState } from 'react'
+import { View, Text, TouchableOpacity } from 'react-native';
 import { red, white } from './Constants';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import { Image} from 'react-native';
+import { Image } from 'react-native';
 import Torch from 'react-native-torch';
 
+const SirenON = <Image
+  style={{ height: 200, width: 200, alignSelf: 'center', justifyContent: 'center' }}
+  source={require('./assets/SirenON.png')}
+/>
+
+const SirenOFF = <Image
+  style={{ height: 200, width: 200, alignSelf: 'center', justifyContent: 'center' }}
+  source={require('./assets/SirenOFF.png')}
+/>
 
 const Flasher = () => {
   //Default Keep Awake off
   const [isTorchOn, setIsTorchOn] = useState(false);
 
-  const handlePress = () => {
-    Torch.switchState(!isTorchOn);
-    setIsTorchOn(!isTorchOn);
+  const handlePress = async () => {
+    const cameraAllowed = await Torch.requestCameraPermission(
+      'Camera Permissions', // dialog title
+      'We require camera permissions to use the torch on the back of your phone.' // dialog body
+    );
+
+    if (cameraAllowed) {
+      Torch.switchState(!isTorchOn);
+      setIsTorchOn(!isTorchOn);
+    }
   };
 
-
-function Flasher() {
   return (
-    <View >
-      <Image
-          style={{ height: 120, width: 120, alignSelf: 'center' }}
-          source={require('./assets/SirenOFF.png')}
-        />
-      
-
+    <View style={{ flex: 1 }}>
+      <TouchableOpacity onPress={handlePress}>
+        {isTorchOn ? SirenON : SirenOFF}
+      </TouchableOpacity>
+      <Text style={{ color: '#000000', marginBottom: 50, fontSize: 20, fontWeight: 'bold' }}>Flasher</Text>
     </View>
   );
-}
 }
 
 
