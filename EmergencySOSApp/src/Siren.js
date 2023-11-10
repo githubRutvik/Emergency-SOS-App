@@ -17,13 +17,14 @@ const SirenOFF = (
   />
 );
 
-function Siren() {
+const Siren = () => {
   const [isSirenOn, setIsSirenOn] = useState(false);
   const [sound, setSound] = useState(null);
 
   const playSound = () => {
     if (sound) {
-      sound.release(); // Release the previously loaded sound
+      // Release the previously loaded sound
+      sound.release();
     }
 
     const sirenSound = new Sound('siren.mp3', Sound.MAIN_BUNDLE, (error) => {
@@ -32,28 +33,22 @@ function Siren() {
         return;
       }
 
-      // loaded successfully
-      console.log('duration in seconds: ' + sirenSound.getDuration() + 'number of channels: ' + sirenSound.getNumberOfChannels());
+      // Set the number of loops to infinity
+      sirenSound.setNumberOfLoops(-1);
 
-      // Play the sound with an onEnd callback
-      sirenSound.play((success) => {
-        if (success) {
-          console.log('successfully finished playing');
-        } else {
-          console.log('playback failed due to audio decoding errors');
-        }
-      });
+      // Play the sound
+      sirenSound.play();
 
-      setSound(sirenSound); // Save the sound object in the state
+      // Save the sound object in the state
+      setSound(sirenSound);
     });
-
-    setIsSirenOn(true);
   };
 
   const stopSound = () => {
     if (sound) {
       sound.stop(() => {
-        sound.release(); // Release the sound
+        // Release the sound
+        sound.release();
         setIsSirenOn(false);
       });
     }
@@ -67,6 +62,6 @@ function Siren() {
       <Text style={{ color: '#000000', marginBottom: 50, fontSize: 20, fontWeight: 'bold' }}>Siren</Text>
     </View>
   );
-}
+};
 
 export default Siren;

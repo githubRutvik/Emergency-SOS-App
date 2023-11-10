@@ -34,7 +34,7 @@ const Flasher = () => {
 
   return (
     <View style={{ flex: 1 }}>
-      <TouchableOpacity onPress={handlePress}>
+      <TouchableOpacity onPress={handlePress} style={{ alignItems: 'center', justifyContent: 'center'}}>
         {isTorchOn ? FlashON : FlashOFF}
       </TouchableOpacity>
       <Text style={{ color: '#000000', marginBottom: 50, fontSize: 20, fontWeight: 'bold' }}>Flasher</Text>
