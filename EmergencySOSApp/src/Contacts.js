@@ -1,47 +1,33 @@
 
 import React, { useState } from 'react';
-import { View, Text, Touchable, Image, FlatList, TouchableOpacity,PermissionsAndroid } from 'react-native';
+import { View, Text, Touchable, Image, FlatList, TouchableOpacity, PermissionsAndroid } from 'react-native';
 import { red, white } from './Constants';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import SelectContact from 'react-native-select-contact';
-
-PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.READ_CONTACTS, {
-  title: 'Contacts',
-  message: 'This app would like to view your contacts.',
-  buttonPositive: 'Please accept bare mortal',
-})
-  .then((res) => {
-      console.log('Permission: ', res);
-      Contacts.getAll()
-          .then((Contacts) => {
-              // work with contacts
-              console.log(contacts);
-          })
-          .catch((e) => {
-              console.log(e);
-          });
-  })
-  .catch((error) => {
-      console.error('Permission error: ', error);
-  });
+import { selectContactPhone } from 'react-native-select-contact';
 
 const Contacts = () => {
   const [selectedContacts, setSelectedContacts] = useState([]);
 
   const selectContacts = async () => {
-    try {
-      const result = await SelectContact.pickContact({
-        multiple: true,
-        numberOfSelect: 5,
-        selectedContacts,
-      });
+    PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.READ_CONTACTS, {
+      title: 'Contacts',
+      message: 'This app would like to view your contacts.',
+      buttonPositive: 'Please accept bare mortal',
+    }).then(() => {
+      selectContactPhone()
+        .then(selection => {
+          if (!selection) {
+            return null;
+          }
 
-      if (result) {
-        setSelectedContacts(result);
-      }
-    } catch (error) {
-      console.error('Error selecting contacts:', error);
-    }
+          let { contact, selectedPhone } = selection;
+          console.log(`Selected ${selectedPhone.type} phone number ${selectedPhone.number} from ${contact.name}`);
+
+          setSelectedContacts(_contacts => [..._contacts, { name: contact.name, phone: selectedPhone.number }]);
+
+          return selectedPhone.number;
+        });
+    })
   };
 
   return (
@@ -51,22 +37,25 @@ const Contacts = () => {
         <Text>Contacts</Text>
         <FlatList
           data={selectedContacts}
-          keyExtractor={(item) => item.recordID}
+          keyExtractor={(_, idx) => idx.toString()}
           renderItem={({ item }) => (
             <View>
-              <Text>{item.displayName}</Text>
-              <Text>{item.phoneNumbers[0]?.number}</Text>
+              <Text>{item.name}</Text>
+              <Text>{item.phone}</Text>
             </View>
           )}
+          contentContainerStyle={{ backgroundColor: 'red' }}
         />
       </View>
-      <TouchableOpacity onPress={selectContacts}>
-        <Image
-          style={{ height: 60, width: 60, marginBottom: 150,marginLeft:250 , alignItems: 'center' }}
-          source={require('./assets/add.png')} />
 
+      {selectedContacts.length <= 5 && (
+        <TouchableOpacity onPress={selectContacts}>
+          <Image
+            style={{ height: 60, width: 60, marginBottom: 150, marginLeft: 250, alignItems: 'center' }}
+            source={require('./assets/add.png')} />
 
-      </TouchableOpacity>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
