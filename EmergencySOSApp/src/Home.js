@@ -1,9 +1,10 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, Alert, Button} from 'react-native';
 import Background from './Background';
 import Btn from './Btn';
 import { red, white } from './Constants';
 import { Image} from 'react-native';
+
 
 
 const Home = (props) => {

@@ -1,9 +1,10 @@
 
 import React, { useState } from 'react';
-import { View, Text, Touchable, Image, FlatList, TouchableOpacity, PermissionsAndroid } from 'react-native';
+import { View, Text, Touchable, Image, FlatList, TouchableOpacity, PermissionsAndroid, Button } from 'react-native';
 import { red, white } from './Constants';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { selectContactPhone } from 'react-native-select-contact';
+import SendSMS from 'react-native-get-sms-android';
 
 const Contacts = () => {
   const [selectedContacts, setSelectedContacts] = useState([]);
@@ -30,6 +31,25 @@ const Contacts = () => {
     })
   };
 
+  sendMessage = () => {
+    const phoneNumber = '9518765805'; // Replace with the recipient's phone number
+    const message = 'Hello there'; // Replace with your desired message
+
+    SendSMS.send({
+      body: message,
+      recipients: [phoneNumber],
+      successTypes: ['sent', 'queued'],
+    }, (completed, cancelled, error) => {
+      if (completed) {
+        Alert.alert('Success', 'Message sent!');
+      } else if (cancelled) {
+        Alert.alert('Cancelled', 'Message sending cancelled.');
+      } else if (error) {
+        Alert.alert('Error', `Message sending failed: ${error}`);
+      }
+    });
+  };
+
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
 
@@ -48,6 +68,13 @@ const Contacts = () => {
         />
       </View>
 
+      <View >
+        <Button style={{flex:1, backgroundColor: 'blue'}}
+          title="Send SMS"
+          onPress={this.sendMessage}
+        />
+      </View>
+
       {selectedContacts.length <= 5 && (
         <TouchableOpacity onPress={selectContacts}>
           <Image
@@ -58,6 +85,7 @@ const Contacts = () => {
       )}
     </View>
   );
+
 };
 
 export default Contacts;
