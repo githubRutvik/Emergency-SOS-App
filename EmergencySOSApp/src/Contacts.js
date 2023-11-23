@@ -53,15 +53,15 @@ const Contacts = () => {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
 
-      <View style={{ marginTop: 20 }}>
-        <Text>Contacts</Text>
+      <View>
+        <Text style={{ marginTop: 50, fontWeight: "bold", color:'#000000', fontSize:30 }}>Contacts</Text>
         <FlatList
           data={selectedContacts}
           keyExtractor={(_, idx) => idx.toString()}
           renderItem={({ item }) => (
-            <View>
-              <Text>{item.name}</Text>
-              <Text>{item.phone}</Text>
+            <View style={{ width: 300, alignItems:'center', borderRadius: 50 }}>
+              <Text style={{ marginTop: 20, fontSize:20, fontWeight: "bold", color:'#000000'}}>{item.name}</Text>
+              <Text style={{ marginTop: 5, fontSize:15, fontWeight: "bold"}}>{item.phone}</Text>
             </View>
           )}
           contentContainerStyle={{ backgroundColor: 'red' }}
@@ -69,7 +69,7 @@ const Contacts = () => {
       </View>
 
       <View >
-        <Button style={{flex:1, backgroundColor: 'blue'}}
+        <Button style={{marginTop:10, flex:1, backgroundColor: 'blue'}}
           title="Send SMS"
           onPress={this.sendMessage}
         />
