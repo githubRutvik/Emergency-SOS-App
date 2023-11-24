@@ -1,13 +1,119 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, Touchable, Image, FlatList, TouchableOpacity, PermissionsAndroid, Button } from 'react-native';
 import { red, white } from './Constants';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { selectContactPhone } from 'react-native-select-contact';
 import SendSMS from 'react-native-get-sms-android';
+import Geolocation, { getCurrentPosition } from '@react-native-community/geolocation';
 
 const Contacts = () => {
   const [selectedContacts, setSelectedContacts] = useState([]);
+  
+  const [
+    currentLongitude,
+    setCurrentLongitude
+  ] = useState('...');
+  const [
+    currentLatitude,
+    setCurrentLatitude
+  ] = useState('...');
+  const [
+    locationStatus,
+    setLocationStatus
+  ] = useState('');
+
+  useEffect(() => {
+    const requestLocationPermission = async () => {
+        try {
+          const granted = await PermissionsAndroid.request(
+            PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+            {
+              title: 'Location Access Required',
+              message: 'This App needs to Access your location',
+            },
+          );
+          if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+            //To Check, If Permission is granted
+            getOneTimeLocation();
+            subscribeLocationLocation();
+          } else {
+            setLocationStatus('Permission Denied');
+          }
+        } catch (err) {
+          console.warn(err);
+        }
+      }
+ 
+    requestLocationPermission();
+    return () => {
+      Geolocation.clearWatch(watchID);
+    };
+  }, []);
+
+  const getOneTimeLocation = () => {
+    setLocationStatus('Getting Location ...');
+    Geolocation.getCurrentPosition(
+      //Will give you the current location
+      (position) => {
+        setLocationStatus('You are Here');
+
+        //getting the Longitude from the location json
+        const currentLongitude = 
+          JSON.stringify(position.coords.longitude);
+
+        //getting the Latitude from the location json
+        const currentLatitude = 
+          JSON.stringify(position.coords.latitude);
+
+        //Setting Longitude state
+        setCurrentLongitude(currentLongitude);
+        
+        //Setting Longitude state
+        setCurrentLatitude(currentLatitude);
+      },
+      (error) => {
+        setLocationStatus(error.message);
+      },
+      {
+        enableHighAccuracy: false,
+        timeout: 30000,
+        maximumAge: 1000
+      },
+    );
+  };
+
+  const subscribeLocationLocation = () => {
+    watchID = Geolocation.watchPosition(
+      (position) => {
+        //Will give you the location on location change
+        
+        setLocationStatus('You are Here');
+        console.log(position);
+
+        //getting the Longitude from the location json        
+        const currentLongitude =
+          JSON.stringify(position.coords.longitude);
+
+        //getting the Latitude from the location json
+        const currentLatitude = 
+          JSON.stringify(position.coords.latitude);
+
+        //Setting Longitude state
+        setCurrentLongitude(currentLongitude);
+
+        //Setting Latitude state
+        setCurrentLatitude(currentLatitude);
+      },
+      (error) => {
+        setLocationStatus(error.message);
+      },
+      {
+        enableHighAccuracy: false,
+        maximumAge: 1000
+      },
+    );
+  };
 
   const selectContacts = async () => {
     PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.READ_CONTACTS, {
@@ -70,8 +176,8 @@ const Contacts = () => {
 
       <View >
         <Button style={{marginTop:10, flex:1, backgroundColor: 'blue'}}
-          title="Send SMS"
-          onPress={this.sendMessage}
+          title="Locate"
+          onPress={getCurrentPosition}
         />
       </View>
 
