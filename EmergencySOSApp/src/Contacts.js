@@ -4,12 +4,19 @@ import { View, Text, Touchable, Image, FlatList, TouchableOpacity, PermissionsAn
 import { red, white } from './Constants';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { selectContactPhone } from 'react-native-select-contact';
-import SendSMS from 'react-native-get-sms-android';
+import SendSMS, { send } from 'react-native-sms';
 import Geolocation, { getCurrentPosition } from '@react-native-community/geolocation';
 
 const Contacts = () => {
   const [selectedContacts, setSelectedContacts] = useState([]);
-  
+  // const [mobileNumber, setMobileNumber] = useState('9999999999');
+  // const [bodySMS, setBodySMS] = useState('Please follow https://aboutreact.com');
+
+  const mobileNumber = '9518765805'; // Replace with the recipient's phone number
+  const bodySMS = `Emergency! I need help! My current location is: "https://maps.google.com/?q=${currentLatitude},${currentLongitude}";`;
+
+
+
   const [
     currentLongitude,
     setCurrentLongitude
@@ -71,6 +78,8 @@ const Contacts = () => {
         
         //Setting Longitude state
         setCurrentLatitude(currentLatitude);
+
+       
       },
       (error) => {
         setLocationStatus(error.message);
@@ -137,24 +146,29 @@ const Contacts = () => {
     })
   };
 
-  sendMessage = () => {
-    const phoneNumber = '9067152654'; // Replace with the recipient's phone number
-    const message = 'Hello there'; // Replace with your desired message
 
-    SendSMS.send({
-      body: message,
-      recipients: [phoneNumber],
-      successTypes: ['sent', 'queued'],
-    }, (completed, cancelled, error) => {
-      if (completed) {
-        Alert.alert('Success', 'Message sent!');
-      } else if (cancelled) {
-        Alert.alert('Cancelled', 'Message sending cancelled.');
-      } else if (error) {
-        Alert.alert('Error', `Message sending failed: ${error}`);
-      }
-    });
-  };
+
+    SendSMS.send(
+      {
+        // Message body
+        body: bodySMS,
+        // Recipients Number
+        recipients: [mobileNumber],
+        // An array of types 
+        // "completed" response when using android
+        successTypes: ['sent', 'queued'],
+      },
+      (completed, cancelled, error) => {
+        if (completed) {
+          console.log('SMS Sent Completed');
+        } else if (cancelled) {
+          console.log('SMS Sent Cancelled');
+        } else if (error) {
+          console.log('Some error occured');
+        }
+      },
+    );
+
 
   return (
     <View style={{ flex: 1, justifyContent: 'center' }}>
@@ -178,6 +192,12 @@ const Contacts = () => {
         <Button style={{marginTop:10, flex:1, backgroundColor: 'blue'}}
           title="Locate"
           onPress={getCurrentPosition}
+        />
+      </View>
+      <View >
+        <Button style={{marginTop:10, flex:1, backgroundColor: 'blue'}}
+          title="Send SMS"
+          onPress={send}
         />
       </View>
 
