@@ -189,13 +189,13 @@ const Contacts = () => {
       </View>
 
       <View >
-        <Button style={{marginTop:10, flex:1, backgroundColor: 'blue'}}
+        <Button style={{marginTop:10, flex:1, backgroundColor: 'blue', width: 50, height:20}}
           title="Locate"
           onPress={getCurrentPosition}
         />
       </View>
       <View >
-        <Button style={{marginTop:10, flex:1, backgroundColor: 'blue'}}
+        <Button style={{marginTop:10, flex:1, backgroundColor: 'blue', width: 50, height:20}}
           title="Send SMS"
           onPress={send}
         />

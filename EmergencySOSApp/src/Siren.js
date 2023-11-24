@@ -55,7 +55,9 @@ const Siren = () => {
   };
 
   return (
+    
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      
       <TouchableOpacity onPress={isSirenOn ? stopSound : playSound}>
         {isSirenOn ? SirenON : SirenOFF}
       </TouchableOpacity>

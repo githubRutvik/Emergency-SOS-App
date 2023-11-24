@@ -37,7 +37,7 @@ function Dashboard(props) {
       </TouchableOpacity>
       <Text style={{ color: '#000000', marginBottom: 50, fontSize: 20, fontWeight: 'bold' }}>Siren</Text>
 
-      <TouchableOpacity onPress={() => props.navigation.navigate('Instruction')}>
+      <TouchableOpacity onPress={() => props.navigation.navigate('Instructions')}>
         <Image
           style={{ height: 120, width: 120, alignSelf: 'center' }}
           source={require('./assets/InstructionLogo.png')}
