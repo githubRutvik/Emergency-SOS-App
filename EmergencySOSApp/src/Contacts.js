@@ -32,7 +32,7 @@ const Contacts = () => {
   };
 
   sendMessage = () => {
-    const phoneNumber = '9518765805'; // Replace with the recipient's phone number
+    const phoneNumber = '9067152654'; // Replace with the recipient's phone number
     const message = 'Hello there'; // Replace with your desired message
 
     SendSMS.send({
@@ -51,7 +51,7 @@ const Contacts = () => {
   };
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={{ flex: 1, justifyContent: 'center' }}>
 
       <View>
         <Text style={{ marginTop: 50, fontWeight: "bold", color:'#000000', fontSize:30 }}>Contacts</Text>
@@ -75,12 +75,11 @@ const Contacts = () => {
         />
       </View>
 
-      {selectedContacts.length <= 5 && (
+      {selectedContacts.length <= 4 && (
         <TouchableOpacity onPress={selectContacts}>
           <Image
             style={{ height: 60, width: 60, marginBottom: 150, marginLeft: 250, alignItems: 'center' }}
             source={require('./assets/add.png')} />
-
         </TouchableOpacity>
       )}
     </View>
